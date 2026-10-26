@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0747a6">
+  <meta name="description" content="You're invited! Celebrate Mikael's 7th Birthday on November 15, 2026, at 2:00 PM at Antel Grand Village – Grand Ballroom.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mikael's 7th Birthday — I Choose You!">
+  <meta property="og:description" content="November 15, 2026 • 2:00 PM • Antel Grand Village – Grand Ballroom">
+  <meta property="og:image" content="assets/birthday-pubmat.webp">
+  <title>Mikael's 7th Birthday | Pokémon Adventure</title>
+  <link rel="icon" href="assets/pokeball.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"></div>
+  <main class="poster" aria-label="Mikael's Pokémon-themed seventh birthday invitation">
+    <img class="pubmat" src="assets/birthday-pubmat.webp" alt="Pokémon birthday artwork: Mikael's 7th Birthday, November 15, 2026 at 2:00 PM, Antel Grand Village Grand Ballroom. Trainer reminder: Socks are a must for the inflatable play area." width="1672" height="941" fetchpriority="high">
+    <img class="mikael-person" src="assets/mikael-original-photo-cutout.png" alt="Mikael in his real orange Charizard costume, from the original unfiltered photograph" width="361" height="735" fetchpriority="high" decoding="async">
+
+    <!-- The transparent click targets follow the printed artwork precisely. -->
+    <button class="hitbox date-hotspot" id="dateHotspot" type="button" title="Add November 15 to your calendar" aria-label="Add Mikael's birthday on November 15, 2026, at 2:00 PM to your calendar">
+      <span class="tip" aria-hidden="true">Add to calendar</span>
+    </button>
+    <button class="hitbox time-hotspot" id="timeHotspot" type="button" title="Add 2:00 PM to your calendar" aria-label="Add the birthday celebration at 2 PM to your calendar">
+      <span class="tip" aria-hidden="true">Add to calendar</span>
+    </button>
+    <a class="hitbox venue-hotspot" href="https://www.google.com/maps/search/?api=1&amp;query=Antel%20Grand%20Village%20Grand%20Ballroom%20Bacao%202%20General%20Trias%20Cavite%20Philippines" target="_blank" rel="noopener noreferrer" title="Open Antel Grand Village – Grand Ballroom in Google Maps" aria-label="Open Grand Ballroom, Antel Grand Village, in Google Maps">
+      <span class="tip" aria-hidden="true">Open Google Maps ↗</span>
+    </a>
+
+    <!-- Live figures sit inside the existing *empty* neon countdown frame. -->
+    <section class="countdown" id="countdown" aria-label="Live countdown to the birthday celebration" role="timer">
+      <div class="countdown-cell"><span class="digit" id="days">00</span><span class="unit">Days</span></div>
+      <div class="countdown-cell"><span class="digit" id="hours">00</span><span class="unit">Hours</span></div>
+      <div class="countdown-cell"><span class="digit" id="minutes">00</span><span class="unit">Minutes</span></div>
+      <div class="countdown-cell"><span class="digit" id="seconds">00</span><span class="unit">Seconds</span></div>
+    </section>
+    <p class="sr-only" id="countdownStatus" aria-live="off"></p>
+
+    <!-- The original menu is removed. Only a functional audio control remains. -->
+    <div class="sound-wrapper">
+      <button class="sound-toggle" id="soundToggle" type="button" aria-pressed="false" aria-controls="musicPanel" title="Play or pause music">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 18V5l12-2v13a4 4 0 1 1-2-3.46V7.4l-8 1.2V19a4 4 0 1 1-2-3.46V18Z"/></svg>
+        <span id="soundLabel">Music: Off</span>
+        <span class="sound-indicator" aria-hidden="true"><span></span></span>
+      </button>
+      <div class="music-panel" id="musicPanel" hidden>
+        <button class="panel-close" id="closeMusic" type="button" aria-label="Close music panel">×</button>
+        <strong>Pokémon soundtrack</strong>
+        <p>Play an authorized track in this invitation, or listen at the official music library.</p>
+        <button type="button" id="chooseMusic" class="mini-button">Choose an audio file</button>
+        <a href="https://soundlibrary.pokemon.co.jp/asia-en/musicbox" target="_blank" rel="noopener noreferrer" class="official-music-link">Open Pokémon Music Box ↗</a>
+        <small>Browser security prevents music from autoplaying until you click. No Pokémon music file is included.</small>
+      </div>
+      <input id="musicFile" class="sr-only" type="file" accept="audio/mpeg,audio/mp3,audio/wav,audio/x-wav,audio/ogg,audio/mp4,audio/*" aria-label="Choose a soundtrack file">
+      <audio id="soundtrack" loop preload="none" src="assets/pokemon-soundtrack.mp3"></audio>
+    </div>
+  </main>
+
+  <dialog class="calendar-dialog" id="calendarDialog" aria-labelledby="calendarHeading" aria-describedby="calendarInfo">
+    <button class="dialog-close" id="closeCalendar" type="button" aria-label="Close">×</button>
+    <span class="dialog-emoji" aria-hidden="true">📅</span>
+    <h2 id="calendarHeading">Save the date!</h2>
+    <p id="calendarInfo"><strong>Mikael's 7th Birthday</strong><br>November 15, 2026 • 2:00 PM (Philippine time)<br>Antel Grand Village – Grand Ballroom</p>
+    <a class="calendar-primary" id="googleCalendar" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Mikael%27s%207th%20Birthday&amp;dates=20261115T140000%2F20261115T150000&amp;ctz=Asia%2FManila&amp;details=Get%20ready%20to%20catch%20some%20fun%21%20Trainer%20reminder%3A%20Socks%20are%20a%20must%20for%20the%20inflatable%20play%20area.&amp;location=Antel%20Grand%20Village%20-%20Grand%20Ballroom%2C%20Bacao%202%2C%20General%20Trias%2C%20Cavite%2C%20Philippines" target="_blank" rel="noopener noreferrer">Add to Google Calendar ↗</a>
+    <button class="calendar-secondary" id="downloadIcs" type="button">Download calendar event (.ics)</button>
+    <small>Calendar entries use a one-hour editable placeholder, since no end time was provided.</small>
+  </dialog>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
