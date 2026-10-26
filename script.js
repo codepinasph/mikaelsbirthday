@@ -79,14 +79,23 @@ function setPlaying(isPlaying) {
 }
 function openMusicPanel() { musicPanel.hidden = false; }
 function closeMusicPanel() { musicPanel.hidden = true; }
-async function startMusic() {
+const autoStartEvents = ['pointerdown', 'keydown', 'touchstart'];
+function removeAutoStartListeners() {
+  autoStartEvents.forEach(type => document.removeEventListener(type, attemptAutoStart, true));
+}
+function attemptAutoStart(event) {
+  if (event?.target?.closest?.('.sound-wrapper')) return;
+  void startMusic({ quiet: true });
+}
+async function startMusic({ quiet = false } = {}) {
   try {
     await soundtrack.play();
     setPlaying(true);
     closeMusicPanel();
+    removeAutoStartListeners();
   } catch (error) {
     setPlaying(false);
-    openMusicPanel();
+    if (!quiet) openMusicPanel();
   }
 }
 soundToggle.addEventListener('click', async () => {
@@ -117,3 +126,5 @@ document.addEventListener('click', event => {
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape') closeMusicPanel();
 });
+autoStartEvents.forEach(type => document.addEventListener(type, attemptAutoStart, { capture: true, passive: true }));
+void startMusic({ quiet: true });
