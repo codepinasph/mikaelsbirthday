@@ -72,6 +72,7 @@ const soundtrack = $('soundtrack');
 const musicPanel = $('musicPanel');
 const musicFile = $('musicFile');
 let localAudioUrl = null;
+let shouldAutoStart = true;
 
 function setPlaying(isPlaying) {
   soundToggle.setAttribute('aria-pressed', String(isPlaying));
@@ -100,10 +101,12 @@ async function startMusic({ quiet = false } = {}) {
 }
 soundToggle.addEventListener('click', async () => {
   if (!soundtrack.paused) {
+    shouldAutoStart = false;
     soundtrack.pause();
     setPlaying(false);
     return;
   }
+  shouldAutoStart = true;
   await startMusic();
 });
 $('closeMusic').addEventListener('click', closeMusicPanel);
@@ -115,11 +118,18 @@ musicFile.addEventListener('change', async () => {
   localAudioUrl = URL.createObjectURL(file);
   soundtrack.src = localAudioUrl;
   soundtrack.load();
+  shouldAutoStart = true;
   await startMusic();
 });
 soundtrack.addEventListener('ended', () => setPlaying(false));
 soundtrack.addEventListener('pause', () => setPlaying(false));
 soundtrack.addEventListener('error', () => { setPlaying(false); if (!soundtrack.paused) openMusicPanel(); });
+function retryAutoStart() {
+  if (shouldAutoStart && soundtrack.paused) void startMusic({ quiet: true });
+}
+soundtrack.addEventListener('canplay', retryAutoStart);
+window.addEventListener('pageshow', retryAutoStart);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) retryAutoStart(); });
 document.addEventListener('click', event => {
   if (!musicPanel.hidden && !event.target.closest('.sound-wrapper')) closeMusicPanel();
 });
