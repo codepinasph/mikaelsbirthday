@@ -37,6 +37,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .mini-button { cursor: pointer; background: #ffca28; color: #04235e; font-weight: 750; border: 0; padding: 10px 12px; border-radius: 10px; width: 100%; }
 .official-music-link { display: block; text-align: center; margin-top: 7px; padding: 9px 12px; border-radius: 10px; border: 1px solid #ffffff70; color: #fff; text-decoration: none; font-weight: 700; }
 .official-music-link:hover { background: #ffffff16; }
+.mobile-layout { display: contents; }
+.mobile-hero, .mobile-details { display: none; }
 .calendar-dialog { position: fixed; z-index: 100; border: 1px solid #ffe37a; background: linear-gradient(150deg, #0b377d, #091940); color: #fff; border-radius: 22px; width: min(420px, calc(100vw - 26px)); max-width: none; padding: 28px; text-align: center; box-shadow: 0 20px 100px #000b; }
 .calendar-dialog::backdrop { background: #001330bb; backdrop-filter: blur(5px); }
 .calendar-dialog .dialog-emoji { font-size: 36px; }
@@ -48,73 +50,38 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .calendar-secondary { margin-top: 10px; color: #fff; background: #0d407a; border: 1px solid #69adff; }
 .calendar-dialog small { display: block; margin-top: 15px; color: #b6c8e6; font-size: 11px; line-height: 1.4; }
 .sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
-@media (max-width: 760px) and (orientation: portrait) {
+@media (max-width: 600px) and (orientation: portrait) {
   body { display: block; overflow-x: hidden; overflow-y: auto; }
-  .poster {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-    width: min(100%, 520px);
-    margin: 0 auto;
-    padding: 0 14px 24px;
-    aspect-ratio: auto;
-    filter: none;
-  }
-  .pubmat { grid-column: 1 / -1; width: 100%; height: auto; }
-  .mikael-person { top: 0; }
-  .hitbox {
-    position: relative;
-    inset: auto;
-    width: 100%;
-    height: auto;
-    min-height: 48px;
-    border: 1px solid #ffe37a99;
-    border-radius: 10px;
-    background: linear-gradient(180deg, #10295c, #061e48);
-  }
-  .date-hotspot, .time-hotspot { grid-column: span 1; }
-  .venue-hotspot { grid-column: 1 / -1; }
-  .tip {
-    position: static;
-    display: grid;
-    min-height: 46px;
-    padding: 8px;
-    transform: none;
-    opacity: 1;
-    white-space: normal;
-    font-size: 13px;
-    line-height: 1.3;
-    text-align: center;
-    color: #fff3af;
-    background: transparent;
-    box-shadow: none;
-  }
-  .hitbox:hover .tip, .hitbox:focus-visible .tip { transform: none; }
-  .countdown {
-    position: static;
-    grid-column: 1 / -1;
-    width: 100%;
-    height: auto;
-    min-height: 88px;
-    padding: 10px;
-    border: 1px solid #ffe37a99;
-    border-radius: 12px;
-    background: linear-gradient(180deg, #10295c, #061e48);
-  }
-  .countdown-cell { gap: 3px; }
-  .digit { font-size: clamp(22px, 8vw, 34px); letter-spacing: 0; }
-  .unit { font-size: clamp(10px, 3vw, 13px); }
+  .ambient { position: fixed; background-position: 28% center; }
+  .poster { width: 100%; max-width: 480px; min-height: 100dvh; height: auto; margin: 0 auto; padding: max(76px, calc(env(safe-area-inset-top) + 68px)) 18px max(24px, env(safe-area-inset-bottom)); aspect-ratio: auto; display: flex; flex-direction: column; gap: 16px; filter: none; }
+  .poster > .pubmat, .poster > .mikael-person, .poster > .hitbox { display: none; }
+  .mobile-layout { display: flex; flex-direction: column; gap: 16px; }
+  .mobile-hero { min-height: clamp(260px, 43dvh, 390px); position: relative; display: flex; align-items: flex-start; overflow: hidden; isolation: isolate; border: 1px solid #ffe07199; border-radius: 24px; background: #09245c; box-shadow: 0 16px 45px #0006; }
+  .mobile-hero::after { position: absolute; z-index: -1; inset: 0; content: ''; background: linear-gradient(180deg, #061c4bed 0%, #08245c9c 42%, #061735e8 100%); }
+  .mobile-hero-art { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: left center; }
+  .mobile-person { position: absolute; z-index: 0; right: -4%; bottom: -4%; width: auto; height: 76%; max-width: 58%; object-fit: contain; object-position: bottom right; filter: drop-shadow(0 8px 10px #00102d99); }
+  .mobile-heading { position: relative; z-index: 1; width: 100%; padding: 22px 18px; text-shadow: 0 2px 8px #00133c; }
+  .mobile-heading p { margin: 0 0 7px; color: #ffe35a; font-size: 12px; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; }
+  .mobile-heading h1 { max-width: 270px; margin: 0; color: #ffdc28; font-size: clamp(28px, 8vw, 38px); font-weight: 950; line-height: .98; letter-spacing: -.04em; -webkit-text-stroke: .5px #f8f0c1; }
+  .mobile-heading > span { display: block; max-width: 205px; margin-top: 10px; color: #fff; font-size: 14px; font-weight: 750; line-height: 1.3; }
+  .countdown { position: relative; left: auto; top: auto; width: 100%; height: auto; min-height: 96px; padding: 12px 8px; border: 1px solid #43cfff; border-radius: 18px; background: linear-gradient(140deg, #071a48f5, #092d6ff2); box-shadow: 0 0 20px #078cff48, inset 0 0 14px #1c95ff29; }
+  .countdown-cell { gap: 4px; }
   .countdown-cell + .countdown-cell::before { width: 1px; }
-  .sound-wrapper {
-    position: relative;
-    inset: auto;
-    grid-column: 1 / -1;
-    display: flex;
-    justify-content: center;
-    padding: 2px 0;
-  }
-  .sound-toggle { min-height: 44px; font-size: 13px; }
-  .music-panel { right: 50%; max-width: calc(100vw - 28px); transform: translateX(50%); }
+  .digit { font-size: clamp(24px, 7.5vw, 34px); letter-spacing: -.06em; }
+  .unit { font-size: 11px; }
+  .mobile-details { display: block; padding: 18px; border: 1px solid #ffffff2a; border-radius: 20px; background: linear-gradient(145deg, #0b2a65f2, #071a43f5); box-shadow: 0 12px 35px #0005; }
+  .mobile-details-label { margin: 0 0 12px; color: #ffe35a; font-size: 12px; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
+  .mobile-event-actions { display: grid; gap: 9px; }
+  .mobile-detail-button { width: 100%; min-height: 58px; display: flex; align-items: center; gap: 12px; padding: 10px 12px; border: 1px solid #ffffff28; border-radius: 13px; color: #fff; background: #ffffff0b; text-align: left; text-decoration: none; font: inherit; cursor: pointer; }
+  .mobile-detail-button > span:first-child { font-size: 22px; }
+  .mobile-detail-button strong, .mobile-detail-button small { display: block; }
+  .mobile-detail-button strong { font-size: 14px; }
+  .mobile-detail-button small { margin-top: 3px; color: #c9d9f5; font-size: 12px; }
+  .mobile-reminder { margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #ffffff26; color: #eaf1ff; font-size: 12px; font-weight: 650; line-height: 1.5; }
+  .mobile-reminder span { margin-right: 4px; }
+  .sound-wrapper { position: fixed; top: max(12px, env(safe-area-inset-top)); right: max(12px, env(safe-area-inset-right)); }
+  .sound-toggle { font-size: 12px; min-height: 40px; }
+  .music-panel { max-width: calc(100vw - 24px); }
   .calendar-dialog { max-height: calc(100dvh - 24px); overflow-y: auto; padding: 24px 20px; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0s !important; transition: none !important; } }

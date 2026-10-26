@@ -30,6 +30,7 @@ const calendarDialog = $('calendarDialog');
 function showCalendar() { if (!calendarDialog.open) calendarDialog.showModal(); }
 $('dateHotspot').addEventListener('click', showCalendar);
 $('timeHotspot').addEventListener('click', showCalendar);
+$('mobileCalendar').addEventListener('click', showCalendar);
 $('closeCalendar').addEventListener('click', () => calendarDialog.close());
 calendarDialog.addEventListener('click', event => { if (event.target === calendarDialog) calendarDialog.close(); });
 
