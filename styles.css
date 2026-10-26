@@ -56,8 +56,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .mobile-detail-button small { margin-top: 5px; color: #d1dcf5; font-size: 14px; line-height: 1.2; }
 .mobile-reminder { margin: 20px 0 0; padding-top: 17px; border-top: 1px solid #ffffff3b; color: #f0f4ff; font-size: 14px; font-weight: 750; line-height: 1.55; }
 .mobile-reminder span { margin-right: 8px; }
-.desktop-view-button { width: 100%; min-height: 44px; margin-top: 18px; padding: 10px 14px; border: 1px solid #8ea7e17a; border-radius: 12px; color: #fff; background: linear-gradient(180deg, #304b91, #1b2d63); font: inherit; font-size: 13px; font-weight: 850; letter-spacing: .02em; cursor: pointer; }
-.desktop-view-button:hover, .desktop-view-button:focus-visible { border-color: #ffe37a; background: linear-gradient(180deg, #3c5ca8, #253d7c); outline: none; }
 .calendar-dialog { position: fixed; z-index: 100; border: 1px solid #ffe37a; background: linear-gradient(150deg, #0b377d, #091940); color: #fff; border-radius: 22px; width: min(420px, calc(100vw - 26px)); max-width: none; padding: 28px; text-align: center; box-shadow: 0 20px 100px #000b; }
 .calendar-dialog::backdrop { background: #001330bb; backdrop-filter: blur(5px); }
 .calendar-dialog .dialog-emoji { font-size: 36px; }
@@ -178,33 +176,3 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .calendar-dialog { max-height: calc(100dvh - 24px); overflow-y: auto; padding: 24px 20px; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0s !important; transition: none !important; } }
-
-/* The mobile control can temporarily reveal the original landscape composition. */
-body.desktop-view { overflow: hidden; display: grid; place-items: center; }
-body.desktop-view .poster {
-  --art-top-pad: 0px;
-  width: min(100vw, 177.6833156dvh);
-  height: auto;
-  min-height: 0;
-  margin: 0;
-  padding: 0;
-  aspect-ratio: 1672 / 941;
-  display: block;
-  filter: drop-shadow(0 0 24px #051d5d5e);
-}
-body.desktop-view .poster > .pubmat { width: 100%; height: 100%; border: 0; border-radius: 0; box-shadow: none; }
-body.desktop-view .poster > .mikael-person { left: 13.8756%; top: 22.9543%; width: 16.0287%; height: 57.9171%; display: block; }
-body.desktop-view .poster > .hitbox { display: block; border-radius: 14px; }
-body.desktop-view .date-hotspot { left: 51.4%; top: 50%; width: 13.3%; height: 12.2%; }
-body.desktop-view .time-hotspot { left: 65.3%; top: 50%; width: 11.3%; height: 12.2%; }
-body.desktop-view .venue-hotspot { left: 76.8%; top: 50%; width: 14.6%; height: 12.2%; }
-body.desktop-view .countdown { left: 45.6%; top: 81%; width: 27.5%; height: 8.8%; }
-body.desktop-view .countdown-cell { gap: .08cqw; }
-body.desktop-view .countdown-cell + .countdown-cell::before { width: max(1px, .085cqw); }
-body.desktop-view .digit { font-size: clamp(9px, 2.65cqw, 47px); letter-spacing: -.1cqw; }
-body.desktop-view .unit { font-size: clamp(6px, 1.06cqw, 18px); }
-body.desktop-view .sound-wrapper { position: absolute; top: 2.45%; right: 2.9%; }
-body.desktop-view .tip { display: block; }
-body.desktop-view .mobile-details { display: block; position: fixed; z-index: 20; top: auto; right: 12px; bottom: 12px; left: auto; width: auto; margin: 0; padding: 0; border: 0; border-radius: 0; transform: none; background: none; box-shadow: none; }
-body.desktop-view .mobile-details > :not(.desktop-view-button) { display: none; }
-body.desktop-view .desktop-view-button { width: auto; min-width: 120px; margin: 0; }
