@@ -33,40 +33,29 @@
       <span class="tip" aria-hidden="true">Open Google Maps ↗</span>
     </a>
 
-    <div class="mobile-layout">
-      <section class="mobile-hero" aria-label="Birthday invitation">
-        <img class="mobile-hero-art" src="assets/birthday-pubmat.webp" alt="" aria-hidden="true">
-        <img class="mobile-person" src="assets/mikael-original-photo-cutout.png" alt="">
-        <div class="mobile-heading">
-          <p>You're invited!</p>
-          <h1>Mikael's 7th Birthday</h1>
-          <span>Get ready to catch some fun!</span>
-        </div>
-      </section>
+    <!-- Live figures sit inside the existing *empty* neon countdown frame. -->
+    <section class="countdown" id="countdown" aria-label="Live countdown to the birthday celebration" role="timer">
+      <div class="countdown-cell"><span class="digit" id="days">00</span><span class="unit">Days</span></div>
+      <div class="countdown-cell"><span class="digit" id="hours">00</span><span class="unit">Hours</span></div>
+      <div class="countdown-cell"><span class="digit" id="minutes">00</span><span class="unit">Minutes</span></div>
+      <div class="countdown-cell"><span class="digit" id="seconds">00</span><span class="unit">Seconds</span></div>
+    </section>
 
-      <!-- Live figures sit inside the existing *empty* neon countdown frame. -->
-      <section class="countdown" id="countdown" aria-label="Live countdown to the birthday celebration" role="timer">
-        <div class="countdown-cell"><span class="digit" id="days">00</span><span class="unit">Days</span></div>
-        <div class="countdown-cell"><span class="digit" id="hours">00</span><span class="unit">Hours</span></div>
-        <div class="countdown-cell"><span class="digit" id="minutes">00</span><span class="unit">Minutes</span></div>
-        <div class="countdown-cell"><span class="digit" id="seconds">00</span><span class="unit">Seconds</span></div>
-      </section>
-
-      <section class="mobile-details" aria-label="Birthday details">
-        <p class="mobile-details-label">The big day</p>
-        <div class="mobile-event-actions">
-          <button class="mobile-detail-button" id="mobileCalendar" type="button">
-            <span aria-hidden="true">📅</span>
-            <span><strong>November 15, 2026</strong><small>2:00 PM · Philippine time</small></span>
-          </button>
-          <a class="mobile-detail-button" href="https://www.google.com/maps/search/?api=1&amp;query=Antel%20Grand%20Village%20Grand%20Ballroom%20Bacao%202%20General%20Trias%20Cavite%20Philippines" target="_blank" rel="noopener noreferrer">
-            <span aria-hidden="true">📍</span>
-            <span><strong>Antel Grand Village</strong><small>Grand Ballroom · Open map ↗</small></span>
-          </a>
-        </div>
-        <p class="mobile-reminder"><span aria-hidden="true">⚡</span> Trainer reminder: socks are a must for the inflatable play area!</p>
-      </section>
-    </div>
+    <section class="mobile-details" aria-label="Birthday details">
+      <p class="mobile-details-label">The big day</p>
+      <div class="mobile-event-actions">
+        <button class="mobile-detail-button" id="mobileCalendar" type="button">
+          <span aria-hidden="true">&#x1F4C5;</span>
+          <span><strong>November 15, 2026</strong><small>2:00 PM · Philippine time</small></span>
+        </button>
+        <a class="mobile-detail-button" href="https://www.google.com/maps/search/?api=1&amp;query=Antel%20Grand%20Village%20Grand%20Ballroom%20Bacao%202%20General%20Trias%20Cavite%20Philippines" target="_blank" rel="noopener noreferrer">
+          <span aria-hidden="true">&#x1F4CD;</span>
+          <span><strong>Antel Grand Village</strong><small>Grand Ballroom · Open map ↗</small></span>
+        </a>
+      </div>
+      <p class="mobile-reminder"><span aria-hidden="true">&#x26A1;</span> Trainer reminder: socks are a must for the inflatable play area!</p>
+      <button class="desktop-view-button" id="desktopViewButton" type="button" aria-pressed="false">Desktop view</button>
+    </section>
     <p class="sr-only" id="countdownStatus" aria-live="off"></p>
 
     <!-- The original menu is removed. Only a functional audio control remains. -->

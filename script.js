@@ -34,6 +34,13 @@ $('mobileCalendar').addEventListener('click', showCalendar);
 $('closeCalendar').addEventListener('click', () => calendarDialog.close());
 calendarDialog.addEventListener('click', event => { if (event.target === calendarDialog) calendarDialog.close(); });
 
+const desktopViewButton = $('desktopViewButton');
+desktopViewButton.addEventListener('click', () => {
+  const desktopView = document.body.classList.toggle('desktop-view');
+  desktopViewButton.setAttribute('aria-pressed', String(desktopView));
+  desktopViewButton.textContent = desktopView ? 'Mobile view' : 'Desktop view';
+});
+
 // The invitation specifies a start time only. An editable one-hour placeholder
 // is necessary for broad compatibility with calendar programs.
 const icsEvent = [
